@@ -54,3 +54,34 @@ body{
     border: none;
 
 }
+
+#new-game{
+    background-color: #CCC5B9;
+    color: #252422;
+    padding: 10px 20px;
+    font-size: 3vmin;
+    border-radius: 1rem;
+    margin-top: 5vmin;
+}
+
+#new-game:hover{
+    box-shadow: 0 0 1rem#FFFCF2 ;
+    border: none;
+}
+
+#msg{
+    font-size: 50px;
+    color: #FFFCF2;
+    text-shadow: 0 0 2rem #ee7444 ;
+    margin-top: 8vmin;
+
+}
+
+.hide{
+    display: none;
+}
+
+
+
+
+
