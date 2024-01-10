@@ -20,18 +20,21 @@ const winPatterns = [
 
 const resetGame = () => {
     turn0 = true;
-    enableBoxes = true;
     msgContainer.classList.add("hide");
+    Container.classList.remove("hide");
+    resetButton.classList.remove("hide");
+    enableBoxes ();
+    
 };
 
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
         console.log("yes clicked");
         if(turn0){
-            box.innerText = "o";
+            box.innerText = "Sulo";
             turn0 = false;
         }else{
-            box.innerText = "x";
+            box.innerText = "Binita";
             turn0 = true;
         }
         box.disabled = true;
@@ -55,12 +58,22 @@ const enableBoxes = () => {
 
 
 const showWinner = (winner) => {
-    msg.innerText = `Congratulation, Winner is ${winner}`;
+    msg.innerText = `Congratulation, Winner is ${winner}.`;
     msgContainer.classList.remove("hide");
     Container.classList.add("hide");
     resetButton.classList.add("hide");
+    msgContainer.style.marginTop = "30vmin";
     disableBoxes();
 };
+
+const draw = () => {
+    msg.innerText = "Draw, Play again.";
+    msgContainer.classList.remove("hide");
+    msgContainer.style.marginTop = "30vmin";
+    Container.classList.add("hide");
+    resetButton.classList.add("hide");
+
+}
 
 
 const checkWinner = () => {
@@ -71,12 +84,19 @@ const checkWinner = () => {
 
         if (pos1Val != "" && pos2Val != "" && pos3Val != ""){
             if (pos1Val === pos2Val && pos2Val == pos3Val){
-            //    console.log("winner",pos1Val);
+               console.log("winner",pos1Val);
                showWinner(pos1Val);
             }
-        }
-    }  
+        }  
+        
+    }
+
+    if ([...boxes].every(box => box.innerText !== "")) {
+        console.log("draw");
+        draw();
+    }
+        
 };
 
 newGameBtn.addEventListener("click", resetGame);
-resetBtn.addEventListener("click", resetGame);
+resetButton.addEventListener("click", resetGame);
